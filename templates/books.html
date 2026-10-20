@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<h2>Books</h2>
+<form method="post" action="/books/add">
+ <input name="title" placeholder="Title" required>
+ <input name="author" placeholder="Author" required>
+ <input name="copies" type="number" min="1" value="1" style="width:60px">
+ <button>Add book</button>
+</form>
+<table><tr><th>Title</th><th>Author</th><th>Available</th><th></th></tr>
+{% for b in books %}<tr><td>{{ b.title }}</td><td>{{ b.author }}</td><td>{{ b.copies }}</td>
+<td><form method="post" action="/books/{{ b.id }}/delete"><button>Delete</button></form></td></tr>
+{% endfor %}</table>{% endblock %}
